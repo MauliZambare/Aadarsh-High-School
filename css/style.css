@@ -12,16 +12,35 @@
   --surface-soft: #f3f6fb;
   --shadow-1: 0 8px 24px rgba(15, 25, 40, 0.12);
   --shadow-2: 0 16px 40px rgba(15, 25, 40, 0.18);
+  --page-bg:
+    radial-gradient(1200px 400px at 10% -10%, #e8f1ff 0%, transparent 60%),
+    radial-gradient(800px 400px at 90% 0%, #fff2d6 0%, transparent 60%),
+    #eef3fb;
+}
+
+body[data-theme="dark"] {
+  --brand-900: #0a1a2c;
+  --brand-800: #0f223b;
+  --brand-700: #163053;
+  --brand-600: #1d4472;
+  --accent: #ffd166;
+  --ink: #e6eef8;
+  --muted: #b5c3d6;
+  --surface: #0f1a28;
+  --surface-soft: #152235;
+  --shadow-1: 0 10px 26px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 18px 42px rgba(0, 0, 0, 0.45);
+  --page-bg:
+    radial-gradient(1000px 380px at 15% -10%, rgba(60, 110, 190, 0.15) 0%, transparent 60%),
+    radial-gradient(900px 420px at 85% -5%, rgba(255, 209, 102, 0.08) 0%, transparent 60%),
+    #0a1422;
 }
 
 body {
   margin: 0;
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(1200px 400px at 10% -10%, #e8f1ff 0%, transparent 60%),
-    radial-gradient(800px 400px at 90% 0%, #fff2d6 0%, transparent 60%),
-    #eef3fb;
+  background: var(--page-bg);
 }
 
 header {
@@ -51,6 +70,24 @@ nav a {
 
 nav a:hover { background: var(--brand-700); }
 
+.theme-toggle {
+  margin-left: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .slider {
   position: relative;
   height: 400px;
@@ -59,21 +96,17 @@ nav a:hover { background: var(--brand-700); }
 
 .slides {
   display: flex;
-  width: 300%;
-  animation: slide 20s infinite;
+  width: 100%;
+  transition: transform 0.8s ease;
+  will-change: transform;
 }
 
 .slides img {
   width: 100%;
   height: 400px;
+  flex: 0 0 100%;
   object-fit: cover;
   filter: saturate(1.05);
-}
-
-@keyframes slide {
-  0% { transform: translateX(0); }
-  33% { transform: translateX(-100%); }
-  66% { transform: translateX(-200%); }
 }
 
 .slider-text {
@@ -111,6 +144,98 @@ section h2::after {
   background: var(--accent);
   border-radius: 999px;
   margin-top: 8px;
+}
+
+.teacher-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.filter-btn {
+  border: 1px solid #d7e0ee;
+  background: var(--surface);
+  color: var(--brand-900);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: var(--shadow-1);
+}
+
+.teacher-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.teacher-card {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow-1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.teacher-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+}
+
+.teacher-card h3 {
+  margin: 0 0 6px;
+}
+
+.teacher-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.testimonials {
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: var(--shadow-1);
+}
+
+.testimonial-track {
+  position: relative;
+  min-height: 170px;
+}
+
+.testimonial-card {
+  background: var(--surface-soft);
+  border: 1px solid #e1e8f2;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(12, 24, 40, 0.08);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: absolute;
+  inset: 0;
+}
+
+.testimonial-card.active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+
+.testimonial-card h4 {
+  margin: 12px 0 4px;
+}
+
+.testimonial-card span {
+  color: var(--muted);
+  font-weight: 600;
 }
 
 .impact {

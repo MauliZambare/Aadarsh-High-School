@@ -23,15 +23,18 @@
   <a href="#gallery">Gallery</a>
   <a href="#calendar">Calendar</a>
   <a href="#contact">Contact</a>
+  <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark</button>
 </nav>
 
 <!-- SLIDER -->
 <section class="slider" id="home">
   <div class="slides">
     <img src="images/images/Gemini_Generated_Image_4in8u24in8u24in8.png">
+     <img src="images/images/WhatsApp Image 2026-02-08 at 2.53.06 PM.jpeg">
+     <img src="images/images/WhatsApp Image 2026-02-08 at 2.53.05 PM.jpeg">
     <img src="images/images/WhatsApp Image 2026-02-08 at 2.47.01 PM.jpeg">
-    <img src="images/images/WhatsApp Image 2026-02-08 at 2.53.05 PM.jpeg">
-    <img src="images/images/WhatsApp Image 2026-02-08 at 2.53.06 PM.jpeg">
+    
+   
   </div>
   <div class="slider-text">
     <h2>Nurturing Bright Futures Since 2000</h2>
@@ -93,16 +96,67 @@
 </section>
 
 <section id="staff">
-  <h2>Meet Our Staff</h2>
-  <div class="card">Prof. Dasu Gavit<br><small>Principal</small></div>
-  <div class="card">Prof. Sharad Badgujar<br><small>Chemistry</small></div>
-  <div class="card">Prof. Sharad Pawar<br><small>Mathematics</small></div>
+  <h2>Teacher Profiles</h2>
+  <div class="teacher-filters">
+    <button class="filter-btn active" data-subject="all">All</button>
+    <button class="filter-btn" data-subject="science">Science</button>
+    <button class="filter-btn" data-subject="math">Math</button>
+    <button class="filter-btn" data-subject="english">English</button>
+    <button class="filter-btn" data-subject="history">History</button>
+  </div>
+  <div class="teacher-grid">
+    <div class="teacher-card" data-subject="science">
+      <h3>Prof. Sharad Badgujar</h3>
+      <p>Chemistry</p>
+    </div>
+    <div class="teacher-card" data-subject="math">
+      <h3>Prof. Sharad Pawar</h3>
+      <p>Mathematics</p>
+    </div>
+    <div class="teacher-card" data-subject="english">
+      <h3>Prof. Anjali Deshmukh</h3>
+      <p>English</p>
+    </div>
+    <div class="teacher-card" data-subject="history">
+      <h3>Prof. Amit Patil</h3>
+      <p>History</p>
+    </div>
+    <div class="teacher-card" data-subject="science">
+      <h3>Prof. Meera Kulkarni</h3>
+      <p>Biology</p>
+    </div>
+    <div class="teacher-card" data-subject="math">
+      <h3>Prof. Rahul Joshi</h3>
+      <p>Geometry</p>
+    </div>
+  </div>
 </section>
 
 <section id="news">
   <h2>School News & Updates</h2>
   <p><b>Annual Sports Day</b> – 1 April 2026</p>
   <p><b>PTM Scheduled</b> – 15 March 2026</p>
+</section>
+
+<section id="testimonials" class="testimonials">
+  <h2>What Parents & Students Say</h2>
+  <div class="testimonial-track">
+    <article class="testimonial-card active">
+      <p>"Teachers are supportive and my child's confidence has improved a lot."</p>
+      <h4>Mrs. Kavita Patil</h4>
+      <span>Parent</span>
+    </article>
+    <article class="testimonial-card">
+      <p>"The school encourages sports and academics equally. I love the environment."</p>
+      <h4>Rohan Shinde</h4>
+      <span>Student, Grade 9</span>
+    </article>
+    <article class="testimonial-card">
+      <p>"Regular updates and caring staff make us feel involved in our child's growth."</p>
+      <h4>Mr. Sunil Mahajan</h4>
+      <span>Parent</span>
+    </article>
+  </div>
 </section>
 
 <section id="gallery">
@@ -164,4 +218,3 @@
 <script src="js/script.js"></script>
 </body>
 </html>
-
