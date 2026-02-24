@@ -1,24 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("whatsappForm");
+
+  if (typeof emailjs !== "undefined") {
+    emailjs.init({ publicKey: "7IeHYVkrohWw6L_oD" });
+  } else {
+    console.error("EmailJS: SDK not loaded");
+  }
+
   if (form) {
+    // Keep the existing form markup untouched by assigning template field names in JS.
+    form.querySelector("#name")?.setAttribute("name", "user_name");
+    form.querySelector("#email")?.setAttribute("name", "user_email");
+    form.querySelector("#message")?.setAttribute("name", "message");
+
     form.addEventListener("submit", function(e) {
       e.preventDefault();
 
-      let name = document.getElementById("name").value;
-      let email = document.getElementById("email").value;
-      let message = document.getElementById("message").value;
+      if (typeof emailjs === "undefined") {
+        console.error("EmailJS: SDK not available");
+        return;
+      }
 
-      let whatsappMessage =
-        `Hello Aadarsh High School,%0A%0A` +
-        `Name: ${name}%0A` +
-        `Email: ${email}%0A` +
-        `Message: ${message}`;
-
-      let phoneNumber = "919960308870";
-
-      let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
-
-      window.open(whatsappURL, "_blank");
+      emailjs
+        .sendForm("service_7o3i6rr", "template_ln6dh7k", form)
+        .then(function() {
+          console.log("EmailJS: form sent successfully");
+        })
+        .catch(function(error) {
+          console.error("EmailJS: failed to send form", error);
+        });
     });
   }
 
