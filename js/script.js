@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("whatsappForm");
+  const sendButton = document.getElementById("sendMessageBtn");
+  let isSending = false;
 
   if (typeof emailjs !== "undefined") {
     emailjs.init({ publicKey: "7IeHYVkrohWw6L_oD" });
@@ -15,19 +17,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", function(e) {
       e.preventDefault();
+      if (isSending) return;
 
       if (typeof emailjs === "undefined") {
         console.error("EmailJS: SDK not available");
+        alert("Email service is unavailable. Please try again later.");
         return;
+      }
+
+      const originalLabel = sendButton ? sendButton.textContent : "Send Message";
+      isSending = true;
+      if (sendButton) {
+        sendButton.disabled = true;
+        sendButton.textContent = "Sending...";
       }
 
       emailjs
         .sendForm("service_7o3i6rr", "template_ln6dh7k", form)
         .then(function() {
-          console.log("EmailJS: form sent successfully");
+          alert("Message Sent Successfully!");
+          form.reset();
         })
         .catch(function(error) {
           console.error("EmailJS: failed to send form", error);
+          alert("Failed to send message. Please try again.");
+        })
+        .finally(function() {
+          isSending = false;
+          if (sendButton) {
+            sendButton.disabled = false;
+            sendButton.textContent = originalLabel || "Send Message";
+          }
         });
     });
   }

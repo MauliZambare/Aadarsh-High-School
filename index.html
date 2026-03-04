@@ -190,12 +190,40 @@
 <section id="contact">
   <h2>Contact Us & Locate School 🗺️</h2>
 
-  <!-- WHATSAPP FORM -->
-  <form id="whatsappForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Email Address" required>
-    <textarea id="message" placeholder="Your Inquiry" required></textarea>
-    <button type="submit">Send Message</button>
+  <!-- ADMISSION / CONTACT FORM -->
+  <form id="whatsappForm" class="admission-form">
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="user_name" placeholder="Enter full name" required>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="user_email" placeholder="Enter email address" required>
+      </div>
+
+      <div class="form-field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+      </div>
+
+      <div class="form-field">
+        <label for="admissionClass">Seeking Admission In</label>
+        <select id="admissionClass" name="admission_for" required>
+          <option value="">Select class</option>
+          <option value="Class 8">Class 8</option>
+          <option value="Class 9">Class 9</option>
+          <option value="Class 10">Class 10</option>
+        </select>
+      </div>
+
+      <div class="form-field full-width">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your inquiry" required></textarea>
+      </div>
+    </div>
+    <button id="sendMessageBtn" type="submit">Send Message</button>
   </form>
 
   <!-- MAP -->
